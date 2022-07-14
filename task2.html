@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>task1</title>
+    <link rel="stylesheet" href="./task1.css" />
+  </head>
+  <body>
+    <header class="header">თევზები</header>
+    <div class="wrapper">
+      <form class="sidebar">
+        <input name="თევზი" id="კალმახი" type="radio" class="button1" checked />
+        <label for="კალმახი">კალმახი </label>
+        <input name="თევზი" id="ბარაკუდა" type="radio" class="button1" />
+        <label for="ბარაკუდა">ბარაკუდა</label>
+        <input name="თევზი" id="კამბალა" type="radio" class="button1" />
+        <label for="კამბალა">კამბალა</label>
+      </form>
+      <main class="main">
+        <div id="wrapper">
+          <div class="img-container-2">
+            <img src="./კალმახი.png" alt="კალმახი" id="image" />
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const imageWrapper = document.getElementById("wrapper");
+
+      const imagesObj = {
+        კამბალა: {
+          containerClass: "img-container-1",
+          imageAddress: "კამბალა.jpeg",
+        },
+        კალმახი: {
+          containerClass: "img-container-2",
+          imageAddress: "კალმახი.png",
+        },
+        ბარაკუდა: {
+          containerClass: "img-container-3",
+          imageAddress: "ბარაკუდა.jpg",
+        },
+      };
+
+      function imageGenerator(fish) {
+        const containerClass = imagesObj[fish].containerClass;
+        const imageAddress = imagesObj[fish].imageAddress;
+
+        const newContainer = `<div class=${containerClass}><img src="./${imageAddress}" alt="${fish}" id="image" /></div>`;
+        imageWrapper.innerHTML = newContainer;
+      }
+
+      const kalmaxiBtn = document.getElementById("კალმახი");
+      const barakudaBtn = document.getElementById("ბარაკუდა");
+      const kambalaBtn = document.getElementById("კამბალა");
+
+      kalmaxiBtn.addEventListener("click", () => imageGenerator("კალმახი"));
+      barakudaBtn.addEventListener("click", () => imageGenerator("ბარაკუდა"));
+      kambalaBtn.addEventListener("click", () => imageGenerator("კამბალა"));
+    </script>
+  </body>
+</html>
